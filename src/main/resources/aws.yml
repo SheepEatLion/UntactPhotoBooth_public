@@ -1,0 +1,11 @@
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIAUBY7OHI7EDWJVL3Y
+      secretKey: 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
+    s3:
+      bucket: untactphotobooth
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
