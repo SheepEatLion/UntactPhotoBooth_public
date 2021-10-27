@@ -36,7 +36,7 @@ public class DetectFaceService {
             String imgUrl = imgUrls.get(0);
             String[] split = imgUrl.split("\\.");
             String imgFormatFromImgUrls = split[split.length-1];
-            String imgFilePath = "src/main/webapp/static/assets/test_image." + imgFormatFromImgUrls; // src/main/resources/static/test_image.
+            String imgFilePath = "src/main/resources/static/test_image." + imgFormatFromImgUrls; // src/main/resources/static/test_image.
             String imgFormat = imgFormatFromImgUrls;
 
             getImageFromUrl(imgUrl, imgFilePath, imgFormat);
@@ -59,12 +59,14 @@ public class DetectFaceService {
             PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, "UTF-8"), true);
             String LINE_FEED = "\r\n";
             // file 추가
+            System.out.println("파일 추가");
             String fileName = uploadFile.getName();
             writer.append("--" + boundary).append(LINE_FEED);
             writer.append("Content-Disposition: form-data; name=\"" + paramName + "\"; filename=\"" + fileName + "\"").append(LINE_FEED);
             writer.append("Content-Type: "  + URLConnection.guessContentTypeFromName(fileName)).append(LINE_FEED);
             writer.append(LINE_FEED);
             writer.flush();
+            System.out.println("파일 스트림으로 넘기기");
             FileInputStream inputStream = new FileInputStream(uploadFile);
             byte[] buffer = new byte[4096];
             int bytesRead = -1;
@@ -107,6 +109,7 @@ public class DetectFaceService {
             BufferedImage image = ImageIO.read(new URL(imgUrl));
             File imgFile = new File(imgFilePath);
             ImageIO.write(image, imgFormat, imgFile);
+            System.out.println("여기");
         } catch (Exception e){
 
         }
