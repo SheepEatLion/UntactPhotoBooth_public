@@ -36,11 +36,11 @@ public class DetectFaceService {
             String imgUrl = imgUrls.get(0);
             String[] split = imgUrl.split("\\.");
             String imgFormatFromImgUrls = split[split.length-1];
-            String imgFilePath = "src/main/resources/static/test_image." + imgFormatFromImgUrls;
+            String imgFilePath = "src/main/webapp/static/assets/test_image." + imgFormatFromImgUrls; // src/main/resources/static/test_image.
             String imgFormat = imgFormatFromImgUrls;
 
             getImageFromUrl(imgUrl, imgFilePath, imgFormat);
-            System.out.println("저장완료");
+            System.out.println("S3 저장 후 NEW FILE 이전");
             //String imgFile =
             File uploadFile = new File(imgFilePath);
 
