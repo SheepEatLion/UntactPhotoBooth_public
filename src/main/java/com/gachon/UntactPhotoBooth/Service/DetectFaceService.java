@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 
@@ -24,7 +25,7 @@ public class DetectFaceService {
     @Value("${clientSecret}")
     private String clientSecretReal;
 
-    public String faceAPI(ArrayList<String> imgUrls){
+    public String faceAPI(ArrayList<String> imgUrls, MultipartFile file){
 
 
         StringBuffer reqStr = new StringBuffer();
@@ -33,16 +34,20 @@ public class DetectFaceService {
 
         try {
             String paramName = "image"; // 파라미터명은 image로 지정
-            String imgUrl = imgUrls.get(0);
-            String[] split = imgUrl.split("\\.");
-            String imgFormatFromImgUrls = split[split.length-1];
-            String imgFilePath = "src/main/resources/static/test_image." + imgFormatFromImgUrls; // src/main/resources/static/test_image.
-            String imgFormat = imgFormatFromImgUrls;
-
-            getImageFromUrl(imgUrl, imgFilePath, imgFormat);
-            System.out.println("S3 저장 후 NEW FILE 이전");
+            //String imgUrl = imgUrls.get(0);
+            //String[] split = imgUrl.split("\\.");
+            //String imgFormatFromImgUrls = split[split.length-1];
+            //String imgFilePath = "src/main/resources/static/test_image." + imgFormatFromImgUrls; // src/main/resources/static/test_image.
+            //String imgFormat = imgFormatFromImgUrls;
+            //getImageFromUrl(imgUrl, imgFilePath, imgFormat);
+            //System.out.println("S3 저장 후 NEW FILE 이전");
             //String imgFile =
-            File uploadFile = new File(imgFilePath);
+            //File uploadFile = new File(imgFilePath);
+            String[] imgFormatSplit = file.getOriginalFilename().split("\\.");
+            String imgFormat = imgFormatSplit[imgFormatSplit.length-1];
+            File uploadFile = new File("src/main/resources/static", "test_image." + imgFormat).getAbsoluteFile();
+            file.transferTo(uploadFile);
+            //File uploadFile = file.transferTo(fileInfo);
 
             String apiURL = "https://openapi.naver.com/v1/vision/face"; // 얼굴 감지
             URL url = new URL(apiURL);

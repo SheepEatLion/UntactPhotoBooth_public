@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -35,9 +36,15 @@ public class DetectFaceController {
     private final S3Service s3Service;
 
     @PostMapping("/face")
-    public String detectFace(Model model, @RequestParam("files") MultipartFile[] files, @LoginUser SessionUser user) throws JSONException {
+    public String detectFace(Model model, @RequestParam("files") MultipartFile[] files, @LoginUser SessionUser user) throws Exception {
         ArrayList<String> imgUrl = s3Service.uploadImageToS3(files);
-        String result = detectFaceService.faceAPI(imgUrl);
+        String[] imgFormatSplit = files[0].getOriginalFilename().split("\\.");
+        String imgFormat = imgFormatSplit[imgFormatSplit.length-1];
+        File fileInfo = new File("src/main/resources/static", "test." + imgFormat);
+        //files[0].transferTo(fileInfo);
+        String result = detectFaceService.faceAPI(imgUrl, files[0]);
+
+
         JSONObject jsonObject = new JSONObject(result);
         JSONArray face = jsonObject.getJSONArray("faces");
         JSONObject face_list = face.getJSONObject(0);
