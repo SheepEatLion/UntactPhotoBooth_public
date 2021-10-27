@@ -45,7 +45,8 @@ public class DetectFaceService {
             //File uploadFile = new File(imgFilePath);
             String[] imgFormatSplit = file.getOriginalFilename().split("\\.");
             String imgFormat = imgFormatSplit[imgFormatSplit.length-1];
-            File uploadFile = new File("src/main/resources/static", "test_image." + imgFormat).getAbsoluteFile();
+            //File uploadFile = new File("src/main/resources/static", "test_image." + imgFormat).getAbsoluteFile();
+            File uploadFile = new File("classes/static", "test_image." + imgFormat).getAbsoluteFile();
             file.transferTo(uploadFile);
             //File uploadFile = file.transferTo(fileInfo);
 
