@@ -79,7 +79,7 @@
                             </div>
                             <!-- 자세히보기 누르면 다시 result 페이지로 전달되어야함. -->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">자세히 보기</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">사진 내려받기</a></div>
                             </div>
                         </div>
                     </div>
