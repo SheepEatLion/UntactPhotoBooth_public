@@ -28,4 +28,8 @@ public class HistoryService {
         Page<HistoryListRes> historyListReqPage = entityResult.map(history -> modelMapper.map(history, HistoryListRes.class));
         return historyListReqPage;
     }
+
+    public void historyDelete(Long id){
+        historyRepository.deleteById(id);
+    }
 }

@@ -77,9 +77,9 @@
                                     <h5 class="fw-bolder">{{history.result}}</h5>
                                 </div>
                             </div>
-                            <!-- 자세히보기 누르면 다시 result 페이지로 전달되어야함. -->
+                            <!-- 삭제하기 버튼 누르면 제거 -->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://mynameisjunyeong.com/my-page/download?img=static/064bb9b1-c755-4aff-b2b1-3febbf0a618canger1.jpg">download</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" @click="historyDelete(history.id)">기록 지우기</a></div>
                             </div>
                         </div>
                     </div>
@@ -219,8 +219,8 @@
                             }
                         })
                 },
-                imageDownload: function() {
-                    const vuei = this;
+                historyDelete: function(value) {
+                    axios.delete('/my-page/history-delete/' + value)
 
 
                 },
