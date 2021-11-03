@@ -44,8 +44,10 @@ public class HistoryController {
     public ResponseEntity<byte[]> imageDownload(HttpServletRequest request) throws IOException {
         String imgUrl = request.getParameter("img");
         String[] urls = imgUrl.split("\\.");
-        System.out.println("*******************" + urls[urls.length-2]);
-        return s3Service.downloadImageFromS3(urls[urls.length-2]);
+        String[] img = urls[urls.length-2].split("/");
+
+        System.out.println("*******************" + img[img.length-1]);
+        return s3Service.downloadImageFromS3(img[img.length-1]);
     }
 
     @DeleteMapping("/my-page/history-delete/{id}")
