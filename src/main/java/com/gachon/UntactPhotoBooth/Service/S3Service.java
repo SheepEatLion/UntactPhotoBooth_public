@@ -50,7 +50,7 @@ public class S3Service {
 
     // 이미지 다운로드
     public ResponseEntity<byte[]> downloadImageFromS3(String fileName) throws IOException {
-        S3Object object = amazonS3Client.getObject(new GetObjectRequest(bucket, fileName));
+        S3Object object = amazonS3Client.getObject(new GetObjectRequest(bucket, "static/"+fileName));
         S3ObjectInputStream objectInputStream = object.getObjectContent();
         byte[] bytes = IOUtils.toByteArray(objectInputStream);
 
