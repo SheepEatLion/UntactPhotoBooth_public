@@ -222,10 +222,10 @@
                 historyDelete: function(value) {
                     axios.delete('/my-page/history-delete/' + value)
 
-
                 },
                 historyDownload: function(value) {
-                    axios.get('/my-page/download/' { params: { img: value} } )
+
+                    axios.get('/my-page/download/', { params: { img: value} } )
                 },
                 // 첫 페이지로 이동
                 goFirstPage: function () {
