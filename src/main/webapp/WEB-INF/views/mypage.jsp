@@ -79,7 +79,7 @@
                             </div>
                             <!-- 자세히보기 누르면 다시 result 페이지로 전달되어야함. -->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">사진 내려받기</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://mynameisjunyeong.com/my-page/download/?img=history.image" >download</a></div>
                             </div>
                         </div>
                     </div>
@@ -99,9 +99,9 @@
                                     <h5 class="fw-bolder">기록한 사진이 없어요!</h5>
                                 </div>
                             </div>
-                            <!-- 자세히보기 누르면 무반응 -->
+                            <!-- 이미지 다운로드 -->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">자세히 보기</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto">download</a></div>
                             </div>
                         </div>
                     </div>
@@ -218,6 +218,11 @@
                                 console.log("No Data");
                             }
                         })
+                },
+                imageDownload: function() {
+                    const vuei = this;
+
+
                 },
                 // 첫 페이지로 이동
                 goFirstPage: function () {
