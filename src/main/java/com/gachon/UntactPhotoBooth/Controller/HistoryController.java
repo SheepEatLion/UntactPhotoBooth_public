@@ -42,7 +42,10 @@ public class HistoryController {
 
     @GetMapping("/my-page/download")
     public ResponseEntity<byte[]> imageDownload(HttpServletRequest request) throws IOException {
-        return s3Service.downloadImageFromS3(request.getParameter("img"));
+        String imgUrl = request.getParameter("img");
+        String[] urls = imgUrl.split("\\.");
+        System.out.println("*******************" + urls[urls.length-2]);
+        return s3Service.downloadImageFromS3(urls[urls.length-2]);
     }
 
     @DeleteMapping("/my-page/history-delete/{id}")

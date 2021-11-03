@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <!-- 삭제하기 버튼 누르면 제거 -->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent"  @click="historyDelete(history.image)">
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent"  @click="historyDownload(history.image)">
                             {{ history.image }}
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto">기록 지우기</a></div>
                             </div>
@@ -224,6 +224,9 @@
                     axios.delete('/my-page/history-delete/' + value)
 
 
+                },
+                historyDownload: function(value) {
+                    axios.get('/my-page/download/' { params: { img: value})
                 },
                 // 첫 페이지로 이동
                 goFirstPage: function () {
