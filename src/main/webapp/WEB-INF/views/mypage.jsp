@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <!-- 자세히보기 누르면 다시 result 페이지로 전달되어야함. -->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" v-for="(history, index) in historyList" v-bind:key="history.id">>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" v-for="(history, index) in historyList" v-bind:key="history.id">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://mynameisjunyeong.com/my-page/download/?img=history.image">download</a></div>
                             </div>
                         </div>
