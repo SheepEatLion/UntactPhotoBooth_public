@@ -69,7 +69,7 @@
                             <!-- 카드 우측 상단 날짜 출력 -->
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">{{ history.modifiedDate }}</div>
                             <!-- 분석한 사진 출력 -->
-                            <img class="card-img-top" :src="history.image" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" />
+                            <img class="card-img-top" :src="history.image" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"/>
                             <!-- 분석한 결과 출력 -->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -78,8 +78,8 @@
                                 </div>
                             </div>
                             <!-- 자세히보기 누르면 다시 result 페이지로 전달되어야함. -->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" v-for="(history, index) in historyList" v-bind:key="history.id">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://mynameisjunyeong.com/my-page/download/?img=history.image">download</a></div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://mynameisjunyeong.com/my-page/download?img=static/064bb9b1-c755-4aff-b2b1-3febbf0a618canger1.jpg">download</a></div>
                             </div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
             <div class="container"><p class="m-0 text-center text-white">사진의 양이 많다면, 숫자 또는 아이콘 버튼을 클릭하여 페이지를 이동하시거나, 셀렉트 박스를 클릭하여 한 페이지에 더 많은 사진이 표시되도록 하실 수 있습니다!</p></div>
         </footer>
     </body>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
     const userEmail = '${userEmail}';
 
