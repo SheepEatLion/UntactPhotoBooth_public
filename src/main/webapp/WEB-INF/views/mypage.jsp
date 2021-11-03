@@ -71,6 +71,7 @@
                             <!-- 분석한 사진 출력 -->
                             <img class="card-img-top" :src="history.image" alt="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"/>
                             <!-- 분석한 결과 출력 -->
+                            {{ history.id }}
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- 분석결과 헤드라인 -->
@@ -78,8 +79,8 @@
                                 </div>
                             </div>
                             <!-- 삭제하기 버튼 누르면 제거 -->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" @click="historyDelete(history.id)">기록 지우기</a></div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" v-for="(history, index) in historyList" v-bind:key="history.id">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" @click="historyDelete(history.id)">{{ history.id }} 기록 지우기</a></div>
                             </div>
                         </div>
                     </div>
