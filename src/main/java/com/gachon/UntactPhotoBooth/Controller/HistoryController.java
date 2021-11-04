@@ -50,9 +50,10 @@ public class HistoryController {
         return s3Service.downloadImageFromS3(img[img.length-1]);
     }
 
-    @DeleteMapping("/my-page/history-delete/{id}")
-    public String delete(@PathVariable("id") Long id){
-        historyService.historyDelete(id);
+    @DeleteMapping("/my-page/history-delete/")
+    public String delete(HttpServletRequest request){
+        String imgUrl = request.getParameter("img");
+        historyService.historyDelete(imgUrl);
         return "redirect:/mypage";
     }
 }

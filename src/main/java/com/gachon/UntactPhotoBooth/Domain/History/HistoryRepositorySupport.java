@@ -1,6 +1,7 @@
 package com.gachon.UntactPhotoBooth.Domain.History;
 
 import com.gachon.UntactPhotoBooth.Controller.Dto.HistoryListReq;
+import com.querydsl.core.Query;
 import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -38,5 +39,12 @@ public class HistoryRepositorySupport extends QuerydslRepositorySupport {
                 .fetchResults();
 
         return new PageImpl<>(result.getResults(), pageable, result.getTotal());
+    }
+
+    // 마이 페이지 삭제 대상 조회
+    public History findHistory(String imgUrl){
+        return queryFactory.selectFrom(history)
+                .where(history.image.eq(imgUrl))
+                .fetchOne();
     }
 }

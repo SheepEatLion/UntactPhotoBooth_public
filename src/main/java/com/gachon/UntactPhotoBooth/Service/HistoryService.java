@@ -29,7 +29,7 @@ public class HistoryService {
         return historyListReqPage;
     }
 
-    public void historyDelete(Long id){
-        historyRepository.deleteById(id);
+    public void historyDelete(String imgUrl){
+        historyRepository.delete(historyRepositorySupport.findHistory(imgUrl));
     }
 }
