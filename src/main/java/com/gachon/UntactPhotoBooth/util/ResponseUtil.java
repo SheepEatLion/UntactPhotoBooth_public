@@ -8,10 +8,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 
 /**
- * @Date 2021. 08. 06.
- * @author leesw
- * @email leesw@infobank.net
- * @description : API 응답 값 처리 유틸
+ * API 응답 값 처리 유틸
  */
 public final class ResponseUtil {
 

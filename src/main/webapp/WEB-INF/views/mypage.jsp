@@ -11,6 +11,11 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- css -->
+        <style>
+        [v-cloak] {
+            display: none;
+        }
+        </style>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/all.min.css" integrity="sha512-6c4nX2tn5KbzeBJo9Ywpa0Gkt+mzCzJBrE1RB6fmpcsoN+b/w/euwIMuQKNyUoU/nToKN3a8SgNOtPrbW12fug==" crossorigin="anonymous" />
         <link href="/static/css/mypage.css" rel="stylesheet" type="text/css" />
@@ -21,7 +26,7 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
     <body>
-    <div id="vue">
+    <div id="vue" v-cloak>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -99,9 +104,9 @@
                                     <h5 class="fw-bolder">기록한 사진이 없어요!</h5>
                                 </div>
                             </div>
-                            <!-- 이미지 다운로드 -->
+                            <!-- 이미지 삭제 -->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto">download</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto">Delete</a></div>
                             </div>
                         </div>
                     </div>
@@ -220,12 +225,11 @@
                         })
                 },
                 historyDelete: function(value) {
-                    axios.delete('/my-page/history-delete/', { params: { img: value} })
-
-                },
-                historyDownload: function(value) {
-
-                    axios.get('/my-page/download/', { params: { img: value} } )
+                // 기록 삭제 요청
+                    if(confirm("사진과 결과를 지우시겠습니까?")){
+                        axios.delete('/my-page/history-delete/', { params: { img: value} })
+                        document.location = "https://mynameisjunyeong.com/mypage";
+                    }
                 },
                 // 첫 페이지로 이동
                 goFirstPage: function () {

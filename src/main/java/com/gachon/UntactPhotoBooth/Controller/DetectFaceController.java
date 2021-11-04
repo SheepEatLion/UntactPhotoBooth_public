@@ -6,7 +6,6 @@ import com.gachon.UntactPhotoBooth.Service.DetectFaceService;
 import com.gachon.UntactPhotoBooth.Service.S3Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.json.JSONException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 //import org.springframework.boot.configurationprocessor.json.JSONArray;
@@ -18,13 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.ArrayList;
 
 
 /**
  * 얼굴분석 컨트롤러 ( 클라 <--> 네이버 클로바 )
- * AWS S3 서비스 의존 추가
+ * AWS S3 서비스 DI
  */
 
 @Slf4j
@@ -38,11 +36,7 @@ public class DetectFaceController {
     @PostMapping("/face")
     public String detectFace(Model model, @RequestParam("files") MultipartFile[] files, @LoginUser SessionUser user) throws Exception {
         ArrayList<String> imgUrl = s3Service.uploadImageToS3(files);
-        String[] imgFormatSplit = files[0].getOriginalFilename().split("\\.");
-        String imgFormat = imgFormatSplit[imgFormatSplit.length-1];
-        File fileInfo = new File("src/main/resources/static", "test." + imgFormat);
-        //files[0].transferTo(fileInfo);
-        String result = detectFaceService.faceAPI(imgUrl, files[0]);
+        String result = detectFaceService.faceAPI(files[0]);
 
 
         JSONObject jsonObject = new JSONObject(result);
