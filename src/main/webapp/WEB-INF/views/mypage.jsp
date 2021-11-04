@@ -224,10 +224,10 @@
                             }
                         })
                 },
-                historyDelete: function(value) {
+                historyDelete: async function(value) {
                 // 기록 삭제 요청
                     if(confirm("사진과 결과를 지우시겠습니까?")){
-                        axios.delete('/my-page/history-delete/', { params: { img: value} })
+                        await axios.delete('/my-page/history-delete/', { params: { img: value} })
                         document.location = "https://mynameisjunyeong.com/mypage";
                     }
                 },
