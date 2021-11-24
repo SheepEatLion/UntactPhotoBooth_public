@@ -23,21 +23,41 @@
 - - -
 
 ### :shopping_cart: 기술 스택
+![image](https://user-images.githubusercontent.com/16449498/143180253-ed12be1c-64f0-4433-aadd-1f04dd567057.png)
 
 - - -
 
-### 테이블 설계
+### ✔️ 테이블 설계
+- 데이터베이스는 AWS RDS의 MariaDB 사용
+- 테이블은 2개로 하고 User 테이블과 History 테이블이 있다.
+- User 테이블은 회원정보를 관리하고 History 테이블에서는 회원이 업로드한 기록을 관리한다. 
+
+
+![image](https://user-images.githubusercontent.com/16449498/143179557-c9ef7070-b831-4888-8dfb-f495faf71202.png)
+
+- - -
+
+### ✔️ ORG Chart
+- 일반적인 ORG Chart에서 일부 변형
+- 빨간색은 웹페이지를 의미하며 회색은 기능 또는 권한을 의미한다.
+
+
+![image](https://user-images.githubusercontent.com/16449498/143179427-898f98a0-f966-4cef-9965-64070c3589ce.png)
+
+- - -
+
+### ✔️ Flow Chart
+- 시스템의 전체적인 흐름도
+- 소셜 로그인을 통해 서버리스 BaaS 형태로 로그인 구현
+- 사진촬영은 WebRTC 기술 사용
+- 얼굴 분석은 네이버 클로바 API 사용
+- SSL 인증서를 사용한 배포는 AWS Route 53, ELB, ACM 사용
+
+![image](https://user-images.githubusercontent.com/16449498/143179468-1ab1fe5a-8815-458f-8234-42244eb6086c.png)
 
 
 - - -
 
-### ORG Chart
+### ✔️ issue 사항
 
-- - -
-
-
-### Flow Chart
-
-- - -
-
-### issue 사항
+배포 과정에서 WebRTC의 보안 이슈 발생 -> SSL 인증서 발급 후, Https 로 배포하여 해결
